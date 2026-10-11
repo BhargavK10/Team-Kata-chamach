@@ -1,0 +1,133 @@
+{
+  "company_name": "Wells Fargo",
+  "timestamp": "2026-10-11T09:03:31.919257+00:00",
+  "overall_risk_score": 35,
+  "risk_level": "Moderate",
+  "score_rationale": "Wells Fargo exhibits moderate risk driven by an active federal administration probe into its homeownership lending practices alongside recurring CFPB consumer grievances. The remaining market media represents routine financial coverage, limiting immediate systemic disruption.",
+  "total_evaluated_items": 10,
+  "escalated_threats_count": 6,
+  "noise_items_count": 4,
+  "analyzed_items": [
+    {
+      "analyzed_company": "Wells Fargo",
+      "source_type": "TheGrio",
+      "risk_category": "Regulatory/Compliance",
+      "severity_score": 3,
+      "key_entities": [
+        "Trump administration",
+        "Wells Fargo"
+      ],
+      "threat_summary": "Federal administration scrutiny and probe into Wells Fargo lending initiatives presents compliance and reputational risk.",
+      "escalate_to_index": true
+    },
+    {
+      "analyzed_company": "Wells Fargo",
+      "source_type": "Barchart.com",
+      "risk_category": "Noise",
+      "severity_score": 0,
+      "key_entities": [
+        "Wells Fargo"
+      ],
+      "threat_summary": "Routine update",
+      "escalate_to_index": false
+    },
+    {
+      "analyzed_company": "Wells Fargo",
+      "source_type": "Yahoo Finance",
+      "risk_category": "Noise",
+      "severity_score": 0,
+      "key_entities": [
+        "Wells Fargo",
+        "Applied Digital"
+      ],
+      "threat_summary": "Routine update",
+      "escalate_to_index": false
+    },
+    {
+      "analyzed_company": "Wells Fargo",
+      "source_type": "CNBC",
+      "risk_category": "Noise",
+      "severity_score": 0,
+      "key_entities": [
+        "Hewlett Packard",
+        "Wells Fargo",
+        "Arista Networks",
+        "UnitedHealth"
+      ],
+      "threat_summary": "Routine update",
+      "escalate_to_index": false
+    },
+    {
+      "analyzed_company": "Wells Fargo",
+      "source_type": "Seeking Alpha",
+      "risk_category": "Noise",
+      "severity_score": 0,
+      "key_entities": [
+        "Wells Fargo",
+        "HSBC"
+      ],
+      "threat_summary": "Routine update",
+      "escalate_to_index": false
+    },
+    {
+      "analyzed_company": "Wells Fargo",
+      "source_type": "CFPB Consumer Complaints",
+      "risk_category": "Regulatory/Compliance",
+      "severity_score": 1,
+      "key_entities": [
+        "CFPB",
+        "Wells Fargo"
+      ],
+      "threat_summary": "Isolated consumer grievance logged with the CFPB regarding deposit and withdrawal processing.",
+      "escalate_to_index": true
+    },
+    {
+      "analyzed_company": "Wells Fargo",
+      "source_type": "CFPB Consumer Complaints",
+      "risk_category": "Regulatory/Compliance",
+      "severity_score": 1,
+      "key_entities": [
+        "CFPB",
+        "Wells Fargo"
+      ],
+      "threat_summary": "Individual consumer dispute filed with the CFPB regarding account management and debit card usage issues.",
+      "escalate_to_index": true
+    },
+    {
+      "analyzed_company": "Wells Fargo",
+      "source_type": "CFPB Consumer Complaints",
+      "risk_category": "Regulatory/Compliance",
+      "severity_score": 1,
+      "key_entities": [
+        "CFPB",
+        "Wells Fargo"
+      ],
+      "threat_summary": "Consumer complaint submitted to the CFPB alleging insufficient documentation to verify disputed debt.",
+      "escalate_to_index": true
+    },
+    {
+      "analyzed_company": "Wells Fargo",
+      "source_type": "CFPB Consumer Complaints",
+      "risk_category": "Regulatory/Compliance",
+      "severity_score": 1,
+      "key_entities": [
+        "CFPB",
+        "Wells Fargo"
+      ],
+      "threat_summary": "Individual customer complaint filed with the CFPB regarding loan modification, collection, or foreclosure processes.",
+      "escalate_to_index": true
+    },
+    {
+      "analyzed_company": "Wells Fargo",
+      "source_type": "CFPB Consumer Complaints",
+      "risk_category": "Regulatory/Compliance",
+      "severity_score": 1,
+      "key_entities": [
+        "CFPB",
+        "Wells Fargo"
+      ],
+      "threat_summary": "Consumer grievance registered with the CFPB alleging discrepancy in advertised account opening terms.",
+      "escalate_to_index": true
+    }
+  ]
+}
