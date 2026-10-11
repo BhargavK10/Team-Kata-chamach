@@ -1,120 +1,32 @@
-# Corporate Risk Analysis Engine
+#### Domain: Fintech
 
-Automated public data risk intelligence engine that fetches news & complaints, filters market noise, and prompts Gemini to produce an **Overall Risk Score (0–100)** and individual threat classifications.
+# Automated Corporate Risk Radar
 
----
+## Background
 
-## 📁 Repository Structure
+Financial analysts spend hours reading hundreds of public regulatory complaints, earnings call transcripts, and news items to spot companies heading into trouble. Most of this material is unstructured and noisy, and the few items that signal serious legal or operational risk are easy to miss. By the time a pattern is noticed, the risk may already have escalated.
 
-```
-├── fetch_and_analyze.py   # Core pipeline: fetches 5 news + 5 complaints -> Gemini -> 0-100 Score
-├── api.py                 # REST API endpoints for your backend & frontend UI graphs
-├── models.py              # Pydantic schemas (CompanyRiskAssessment, RiskAnalysisOutput)
-├── prompts.py             # System context, rules, and scoring prompt
-├── requirements.txt       # Dependencies
-└── .env                   # GEMINI_API_KEY configuration
-```
+## Challenge
 
----
+Build an Automated Corporate Risk Radar: an end-to-end system that takes a continuous stream of raw complaint and news text, identifies what is genuinely high-risk, and shows analysts in real time how each company’s risk profile is changing and why.
 
-## 🚀 1. Run the Pipeline Directly
+## Expected Capabilities
 
-To run the pipeline and generate the risk assessment for any company:
+-   Ingest a continuous stream of unstructured news and complaint text about multiple companies.
+-   Flag items that point to serious legal, operational, or compliance threats, and separate them from general noise.
+-   Compute a rolling Corporate Risk Index for each company that moves as new information arrives.
+-   Explain in plain language why a company’s risk is rising, supported by relevant context from that company’s history.
+-   Display a live Risk Scoreboard dashboard covering five target companies.
 
-```powershell
-.\.venv\Scripts\python.exe fetch_and_analyze.py "Wells Fargo"
-```
+## Desired Outcome
 
-*(Replace `"Wells Fargo"` with any target company or keyword).*
+An analyst can open one screen, see which companies are becoming riskier, and understand the reasons within seconds, without reading the underlying documents.
 
-### Actual Output Sample:
-```json
-{
-  "company_name": "Wells Fargo",
-  "timestamp": "2026-10-11T09:03:31.919257+00:00",
-  "overall_risk_score": 35,
-  "risk_level": "Moderate",
-  "score_rationale": "Wells Fargo exhibits moderate risk driven by an active federal administration probe into its homeownership lending practices alongside recurring CFPB consumer grievances. The remaining market media represents routine financial coverage, limiting immediate systemic disruption.",
-  "total_evaluated_items": 10,
-  "escalated_threats_count": 6,
-  "noise_items_count": 4,
-  "analyzed_items": [
-    {
-      "analyzed_company": "Wells Fargo",
-      "source_type": "TheGrio",
-      "risk_category": "Regulatory/Compliance",
-      "severity_score": 3,
-      "key_entities": ["Trump administration", "Wells Fargo"],
-      "threat_summary": "Federal administration scrutiny and probe into Wells Fargo lending initiatives presents compliance and reputational risk.",
-      "escalate_to_index": true
-    },
-    {
-      "analyzed_company": "Wells Fargo",
-      "source_type": "Barchart.com",
-      "risk_category": "Noise",
-      "severity_score": 0,
-      "key_entities": ["Wells Fargo"],
-      "threat_summary": "Routine update",
-      "escalate_to_index": false
-    }
-  ]
-}
-```
+## Evaluation Focus
 
----
-
-## 🌐 2. REST API Endpoints (For Backend & UI Graph Integration)
-
-Start the REST API server:
-```powershell
-.\.venv\Scripts\python.exe api.py
-```
-Server runs at `http://localhost:8000`.
-
-### Endpoints:
-
-#### 1. Evaluate Risk & Get Score (0–100)
-- **Method:** `GET /api/risk-score?company={company_name}`
-- **Example:** `GET http://localhost:8000/api/risk-score?company=Wells+Fargo`
-- **Response:** Complete JSON object containing `overall_risk_score`, `risk_level`, `score_rationale`, and all 10 evaluated items.
-
-#### 2. Trigger via POST (For Backend Pipelines)
-- **Method:** `POST /api/analyze`
-- **Body:**
-  ```json
-  { "company": "Wells Fargo" }
-  ```
-
-#### 3. Time-Series Data for Frontend UI Graphs
-- **Method:** `GET /api/history?company={company_name}`
-- **Response:** Array of historical assessment scores ready for charting libraries (Chart.js, Recharts, ApexCharts):
-  ```json
-  [
-    {
-      "timestamp": "2026-10-11T09:03:31Z",
-      "company_name": "Wells Fargo",
-      "overall_risk_score": 35,
-      "risk_level": "Moderate"
-    }
-  ]
-  ```
-
----
-
-## 🗄️ Database Schema Suggestion (For Backend Engineer)
-
-To persist this data for long-term historical plotting:
-
-```sql
-CREATE TABLE company_risk_scores (
-    id SERIAL PRIMARY KEY,
-    company_name VARCHAR(255) NOT NULL,
-    overall_risk_score INT NOT NULL CHECK (overall_risk_score BETWEEN 0 AND 100),
-    risk_level VARCHAR(50) NOT NULL,
-    score_rationale TEXT,
-    escalated_threats INT DEFAULT 0,
-    noise_count INT DEFAULT 0,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    raw_payload JSONB
-);
-```
+|Area|What judges look for|
+|--|--|
+|Detection quality|How well high-risk items are separated from routine or irrelevant text|
+|Context and explanation|Whether a newly flagged risk comes with accurate, history-aware reasoning|
+|Risk index design|Whether the index is meaningful, responsive, and easy to interpret|
+|Dashboard and usability|Clarity, live updating, and how quickly an analyst can act on it|
