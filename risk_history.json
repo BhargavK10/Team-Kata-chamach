@@ -1,0 +1,230 @@
+[
+  {
+    "company_name": "Wells Fargo",
+    "timestamp": "2026-10-11T10:14:45.302787+00:00",
+    "overall_risk_score": 18,
+    "risk_level": "Low",
+    "escalated_threats_count": 1,
+    "noise_items_count": 9
+  },
+  {
+    "company_name": "Wells Fargo and Company",
+    "timestamp": "2026-10-11T10:15:04.041140+00:00",
+    "overall_risk_score": 18,
+    "risk_level": "Low",
+    "escalated_threats_count": 1,
+    "noise_items_count": 9
+  },
+  {
+    "company_name": "Wells Fargo and Company",
+    "timestamp": "2026-10-11T10:15:28.301747+00:00",
+    "overall_risk_score": 18,
+    "risk_level": "Low",
+    "escalated_threats_count": 1,
+    "noise_items_count": 9
+  },
+  {
+    "company_name": "Wells Fargo",
+    "timestamp": "2026-10-11T10:33:13.176518+00:00",
+    "overall_risk_score": 56,
+    "risk_level": "High",
+    "escalated_threats_count": 1,
+    "noise_items_count": 9,
+    "score_rationale": "Wells Fargo risk is rising to 56/100 (High) driven by 1 flagged regulatory and operational issues across public consumer grievances and industry coverage."
+  },
+  {
+    "company_name": "Wells Fargo",
+    "timestamp": "2026-10-11T10:33:13.176518+00:00",
+    "overall_risk_score": 56,
+    "risk_level": "High",
+    "escalated_threats_count": 1,
+    "noise_items_count": 9
+  },
+  {
+    "company_name": "Wells Fargo and Company",
+    "timestamp": "2026-10-11T10:35:36.087019+00:00",
+    "overall_risk_score": 56,
+    "risk_level": "High",
+    "escalated_threats_count": 1,
+    "noise_items_count": 9,
+    "score_rationale": "Wells Fargo and Company risk is rising to 56/100 (High) driven by 1 flagged regulatory and operational issues across public consumer grievances and industry coverage."
+  },
+  {
+    "company_name": "Wells Fargo and Company",
+    "timestamp": "2026-10-11T10:35:36.087019+00:00",
+    "overall_risk_score": 56,
+    "risk_level": "High",
+    "escalated_threats_count": 1,
+    "noise_items_count": 9
+  },
+  {
+    "company_name": "The Boeing Company",
+    "timestamp": "2026-10-11T10:36:32.337554+00:00",
+    "overall_risk_score": 15,
+    "risk_level": "Low",
+    "escalated_threats_count": 0,
+    "noise_items_count": 5,
+    "score_rationale": "The Boeing Company exhibits low risk (15/100) with routine market updates and no severe compliance or operational threats flagged in recent public data."
+  },
+  {
+    "company_name": "The Boeing Company",
+    "timestamp": "2026-10-11T10:36:32.337554+00:00",
+    "overall_risk_score": 15,
+    "risk_level": "Low",
+    "escalated_threats_count": 0,
+    "noise_items_count": 5
+  },
+  {
+    "company_name": "The Boeing Company",
+    "timestamp": "2026-10-11T10:36:34.992103+00:00",
+    "overall_risk_score": 15,
+    "risk_level": "Low",
+    "escalated_threats_count": 0,
+    "noise_items_count": 5,
+    "score_rationale": "The Boeing Company exhibits low risk (15/100) with routine market updates and no severe compliance or operational threats flagged in recent public data."
+  },
+  {
+    "company_name": "The Boeing Company",
+    "timestamp": "2026-10-11T10:36:34.992103+00:00",
+    "overall_risk_score": 15,
+    "risk_level": "Low",
+    "escalated_threats_count": 0,
+    "noise_items_count": 5
+  },
+  {
+    "company_name": "Tesla Inc.",
+    "timestamp": "2026-10-11T10:36:53.269030+00:00",
+    "overall_risk_score": 15,
+    "risk_level": "Low",
+    "escalated_threats_count": 0,
+    "noise_items_count": 5,
+    "score_rationale": "Tesla Inc. exhibits low risk (15/100) with routine market updates and no severe compliance or operational threats flagged in recent public data."
+  },
+  {
+    "company_name": "Tesla Inc.",
+    "timestamp": "2026-10-11T10:36:53.269030+00:00",
+    "overall_risk_score": 15,
+    "risk_level": "Low",
+    "escalated_threats_count": 0,
+    "noise_items_count": 5
+  },
+  {
+    "company_name": "Tesla Inc.",
+    "timestamp": "2026-10-11T10:37:06.091898+00:00",
+    "overall_risk_score": 15,
+    "risk_level": "Low",
+    "escalated_threats_count": 0,
+    "noise_items_count": 5,
+    "score_rationale": "Tesla Inc. exhibits low risk (15/100) with routine market updates and no severe compliance or operational threats flagged in recent public data."
+  },
+  {
+    "company_name": "Tesla Inc.",
+    "timestamp": "2026-10-11T10:37:06.091898+00:00",
+    "overall_risk_score": 15,
+    "risk_level": "Low",
+    "escalated_threats_count": 0,
+    "noise_items_count": 5
+  },
+  {
+    "company_name": "Walmart Inc.",
+    "timestamp": "2026-10-11T10:37:18.626599+00:00",
+    "overall_risk_score": 56,
+    "risk_level": "High",
+    "escalated_threats_count": 1,
+    "noise_items_count": 4,
+    "score_rationale": "Walmart Inc. risk is rising to 56/100 (High) driven by 1 flagged regulatory and operational issues across public consumer grievances and industry coverage."
+  },
+  {
+    "company_name": "Walmart Inc.",
+    "timestamp": "2026-10-11T10:37:18.626599+00:00",
+    "overall_risk_score": 56,
+    "risk_level": "High",
+    "escalated_threats_count": 1,
+    "noise_items_count": 4
+  },
+  {
+    "company_name": "Walmart Inc.",
+    "timestamp": "2026-10-11T10:37:31.726809+00:00",
+    "overall_risk_score": 56,
+    "risk_level": "High",
+    "escalated_threats_count": 1,
+    "noise_items_count": 4,
+    "score_rationale": "Walmart Inc. risk is rising to 56/100 (High) driven by 1 flagged regulatory and operational issues across public consumer grievances and industry coverage."
+  },
+  {
+    "company_name": "Walmart Inc.",
+    "timestamp": "2026-10-11T10:37:31.726809+00:00",
+    "overall_risk_score": 56,
+    "risk_level": "High",
+    "escalated_threats_count": 1,
+    "noise_items_count": 4
+  },
+  {
+    "company_name": "Tesla Inc.",
+    "timestamp": "2026-10-11T10:40:57.268235+00:00",
+    "overall_risk_score": 15,
+    "risk_level": "Low",
+    "escalated_threats_count": 0,
+    "noise_items_count": 10,
+    "score_rationale": "Tesla Inc. exhibits low risk (15/100) with routine market updates and no severe compliance or operational threats flagged in recent public data."
+  },
+  {
+    "company_name": "Tesla Inc.",
+    "timestamp": "2026-10-11T10:40:57.268235+00:00",
+    "overall_risk_score": 15,
+    "risk_level": "Low",
+    "escalated_threats_count": 0,
+    "noise_items_count": 10
+  },
+  {
+    "company_name": "Tesla Inc.",
+    "timestamp": "2026-10-11T10:41:00.371476+00:00",
+    "overall_risk_score": 15,
+    "risk_level": "Low",
+    "escalated_threats_count": 0,
+    "noise_items_count": 10,
+    "score_rationale": "Tesla Inc. exhibits low risk (15/100) with routine market updates and no severe compliance or operational threats flagged in recent public data."
+  },
+  {
+    "company_name": "Tesla Inc.",
+    "timestamp": "2026-10-11T10:41:00.371476+00:00",
+    "overall_risk_score": 15,
+    "risk_level": "Low",
+    "escalated_threats_count": 0,
+    "noise_items_count": 10
+  },
+  {
+    "company_name": "AbbVie Inc.",
+    "timestamp": "2026-10-11T10:51:18.097949+00:00",
+    "overall_risk_score": 15,
+    "risk_level": "Low",
+    "escalated_threats_count": 0,
+    "noise_items_count": 5,
+    "score_rationale": "AbbVie Inc. exhibits low risk (15/100) with routine market updates and no severe compliance or operational threats flagged in recent public data."
+  },
+  {
+    "company_name": "AbbVie Inc.",
+    "timestamp": "2026-10-11T10:51:18.097949+00:00",
+    "overall_risk_score": 15,
+    "risk_level": "Low",
+    "escalated_threats_count": 0,
+    "noise_items_count": 5
+  },
+  {
+    "company_name": "AbbVie Inc.",
+    "timestamp": "2026-10-11T10:51:28.993340+00:00",
+    "overall_risk_score": 15,
+    "risk_level": "Low",
+    "escalated_threats_count": 0,
+    "noise_items_count": 5,
+    "score_rationale": "AbbVie Inc. exhibits low risk (15/100) with routine market updates and no severe compliance or operational threats flagged in recent public data."
+  },
+  {
+    "company_name": "AbbVie Inc.",
+    "timestamp": "2026-10-11T10:51:28.993340+00:00",
+    "overall_risk_score": 15,
+    "risk_level": "Low",
+    "escalated_threats_count": 0,
+    "noise_items_count": 5
+  }
+]

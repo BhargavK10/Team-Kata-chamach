@@ -152,6 +152,19 @@ db.exec(`
     fetched_at TEXT NOT NULL,
     error TEXT NOT NULL DEFAULT ''
   );
+  CREATE TABLE IF NOT EXISTS company_risk_reports (
+    company_id TEXT PRIMARY KEY REFERENCES companies(company_id) ON DELETE CASCADE,
+    overall_risk_score INTEGER NOT NULL,
+    risk_level TEXT NOT NULL,
+    score_rationale TEXT NOT NULL,
+    cumulative_impact_sum REAL NOT NULL DEFAULT 0.0,
+    sensitivity_k REAL NOT NULL DEFAULT 0.6,
+    total_evaluated_items INTEGER NOT NULL,
+    escalated_threats_count INTEGER NOT NULL,
+    noise_items_count INTEGER NOT NULL,
+    analyzed_items_json TEXT NOT NULL DEFAULT '[]',
+    calculated_at TEXT NOT NULL
+  );
   CREATE INDEX IF NOT EXISTS idx_sessions_expiry ON sessions(expires_at);
 `)
 

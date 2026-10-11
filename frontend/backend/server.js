@@ -17,10 +17,12 @@ const selectCompanyRows = db.prepare(`
   SELECT c.company_id, c.name, c.ticker, c.sector, c.country,
     COUNT(DISTINCT CASE WHEN a.published_at >= strftime('%Y-%m-%dT%H:%M:%fZ', 'now', '-7 days') THEN ca.article_id END) AS article_count,
     COUNT(DISTINCT CASE WHEN a.published_at >= strftime('%Y-%m-%dT%H:%M:%fZ', 'now', '-7 days') AND a.headline_signal != 'General coverage' THEN ca.article_id END) AS risk_keyword_count,
-    MAX(CASE WHEN a.published_at >= strftime('%Y-%m-%dT%H:%M:%fZ', 'now', '-7 days') THEN a.published_at END) AS latest_published_at
+    MAX(CASE WHEN a.published_at >= strftime('%Y-%m-%dT%H:%M:%fZ', 'now', '-7 days') THEN a.published_at END) AS latest_published_at,
+    crr.overall_risk_score, crr.risk_level, crr.escalated_threats_count, crr.noise_items_count
   FROM companies c
   LEFT JOIN company_articles ca ON ca.company_id = c.company_id
   LEFT JOIN news_articles a ON a.article_id = ca.article_id
+  LEFT JOIN company_risk_reports crr ON crr.company_id = c.company_id
   GROUP BY c.company_id
   ORDER BY c.name
 `)
@@ -49,7 +51,10 @@ const selectRecentAlerts = db.prepare(`
 function companyDto(row) {
   const articleCount = Number(row.article_count)
   const riskKeywordCount = Number(row.risk_keyword_count)
-  const category = !articleCount ? 'No coverage' : riskKeywordCount ? 'Risk keywords' : 'Coverage'
+  const hasRiskScore = row.overall_risk_score !== null && row.overall_risk_score !== undefined
+  const riskScore = hasRiskScore ? Number(row.overall_risk_score) : null
+  const riskLevel = row.risk_level || (riskScore !== null ? (riskScore <= 24 ? 'Low' : riskScore <= 49 ? 'Moderate' : riskScore <= 74 ? 'High' : 'Critical') : null)
+  const category = riskLevel ? `${riskLevel} Risk` : (!articleCount ? 'No coverage' : riskKeywordCount ? 'Risk keywords' : 'Coverage')
   return {
     id: row.company_id,
     name: row.name,
@@ -58,6 +63,10 @@ function companyDto(row) {
     country: row.country,
     articleCount,
     riskKeywordCount,
+    riskScore,
+    riskLevel,
+    escalatedThreatsCount: row.escalated_threats_count !== null ? Number(row.escalated_threats_count) : null,
+    noiseItemsCount: row.noise_items_count !== null ? Number(row.noise_items_count) : null,
     color: companyColors[row.ticker.charCodeAt(0) % companyColors.length],
     latestPublishedAt: row.latest_published_at,
     category,
@@ -331,27 +340,85 @@ async function route(request, response, url) {
       url: article.url,
     }))
 
-    // Query the Python Risk Analysis Engine (running on port 8000)
+    // 1. Check if we already have a recent stored risk report in SQLite
+    let storedReport = db.prepare('SELECT * FROM company_risk_reports WHERE company_id = ?').get(company.company_id)
     let aiAssessment = null
-    try {
-      const pythonRes = await fetch(`http://127.0.0.1:8000/api/risk-score?company=${encodeURIComponent(company.name)}`, { signal: AbortSignal.timeout(15000) })
-      if (pythonRes.ok) {
-        aiAssessment = await pythonRes.json()
+
+    if (storedReport) {
+      let items = []
+      try { items = JSON.parse(storedReport.analyzed_items_json) } catch {}
+      aiAssessment = {
+        company_name: company.name,
+        timestamp: storedReport.calculated_at,
+        overall_risk_score: storedReport.overall_risk_score,
+        risk_level: storedReport.risk_level,
+        score_rationale: storedReport.score_rationale,
+        cumulative_impact_sum: storedReport.cumulative_impact_sum,
+        sensitivity_k: storedReport.sensitivity_k,
+        total_evaluated_items: storedReport.total_evaluated_items,
+        escalated_threats_count: storedReport.escalated_threats_count,
+        noise_items_count: storedReport.noise_items_count,
+        analyzed_items: items,
       }
-    } catch (e) {
-      // Python backend fallback message
+    }
+
+    // 2. If not stored, query the Python Risk Analysis Engine (running on port 8000) and save it
+    if (!aiAssessment) {
+      try {
+        const pythonRes = await fetch(`http://127.0.0.1:8000/api/risk-score?company=${encodeURIComponent(company.name)}`, { signal: AbortSignal.timeout(20000) })
+        if (pythonRes.ok) {
+          aiAssessment = await pythonRes.json()
+          // Save in company_risk_reports
+          db.prepare(`
+            INSERT INTO company_risk_reports (
+              company_id, overall_risk_score, risk_level, score_rationale,
+              cumulative_impact_sum, sensitivity_k, total_evaluated_items,
+              escalated_threats_count, noise_items_count, analyzed_items_json, calculated_at
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT(company_id) DO UPDATE SET
+              overall_risk_score = excluded.overall_risk_score,
+              risk_level = excluded.risk_level,
+              score_rationale = excluded.score_rationale,
+              cumulative_impact_sum = excluded.cumulative_impact_sum,
+              sensitivity_k = excluded.sensitivity_k,
+              total_evaluated_items = excluded.total_evaluated_items,
+              escalated_threats_count = excluded.escalated_threats_count,
+              noise_items_count = excluded.noise_items_count,
+              analyzed_items_json = excluded.analyzed_items_json,
+              calculated_at = excluded.calculated_at
+          `).run(
+            company.company_id,
+            aiAssessment.overall_risk_score,
+            aiAssessment.risk_level,
+            aiAssessment.score_rationale,
+            aiAssessment.cumulative_impact_sum ?? 0.0,
+            aiAssessment.sensitivity_k ?? 0.6,
+            aiAssessment.total_evaluated_items ?? 10,
+            aiAssessment.escalated_threats_count,
+            aiAssessment.noise_items_count,
+            JSON.stringify(aiAssessment.analyzed_items ?? []),
+            aiAssessment.timestamp || new Date().toISOString()
+          )
+        }
+      } catch (e) {
+        console.warn(`[api] Python risk engine query for ${company.name} failed:`, e.message)
+      }
     }
 
     return sendJson(response, 200, {
       companyId: company.company_id,
-      status: aiAssessment ? 'verified_ai_assessment' : 'news_metadata_only',
-      message: aiAssessment ? aiAssessment.score_rationale : 'AI risk engine evaluating continuous feeds. Check back shortly.',
+      companyName: company.name,
+      status: aiAssessment ? 'verified_ai_assessment' : 'pending_analysis',
+      message: aiAssessment ? aiAssessment.score_rationale : 'AI risk engine evaluating public feeds for this entity. Refresh in a few seconds.',
       overallRiskScore: aiAssessment ? aiAssessment.overall_risk_score : null,
       riskLevel: aiAssessment ? aiAssessment.risk_level : null,
+      cumulativeImpactSum: aiAssessment ? aiAssessment.cumulative_impact_sum : null,
+      sensitivityK: aiAssessment ? aiAssessment.sensitivity_k : 0.6,
+      totalEvaluatedItems: aiAssessment ? aiAssessment.total_evaluated_items : null,
       escalatedThreatsCount: aiAssessment ? aiAssessment.escalated_threats_count : null,
       noiseItemsCount: aiAssessment ? aiAssessment.noise_items_count : null,
       analyzedItems: aiAssessment ? aiAssessment.analyzed_items : [],
-      evidence: [],
+      historyPoints: aiAssessment?.history_points || [],
       events,
     })
   }
