@@ -1,0 +1,102 @@
+company_id,name,ticker,sector,country
+apple,Apple Inc.,AAPL,Technology,United States
+microsoft,Microsoft Corporation,MSFT,Technology,United States
+amazon,Amazon.com Inc.,AMZN,Consumer Discretionary,United States
+nvidia,NVIDIA Corporation,NVDA,Technology,United States
+alphabet,Alphabet Inc.,GOOGL,Communication Services,United States
+meta,Meta Platforms Inc.,META,Communication Services,United States
+berkshire-hathaway,Berkshire Hathaway Inc.,BRK.B,Financials,United States
+eli-lilly,Eli Lilly and Company,LLY,Healthcare,United States
+broadcom,Broadcom Inc.,AVGO,Technology,United States
+jpmorgan,JPMorgan Chase and Co.,JPM,Financials,United States
+tesla,Tesla Inc.,TSLA,Consumer Discretionary,United States
+walmart,Walmart Inc.,WMT,Consumer Staples,United States
+exxon-mobil,Exxon Mobil Corporation,XOM,Energy,United States
+visa,Visa Inc.,V,Financials,United States
+mastercard,Mastercard Inc.,MA,Financials,United States
+unitedhealth,UnitedHealth Group Inc.,UNH,Healthcare,United States
+oracle,Oracle Corporation,ORCL,Technology,United States
+costco,Costco Wholesale Corporation,COST,Consumer Staples,United States
+procter-gamble,The Procter and Gamble Company,PG,Consumer Staples,United States
+johnson-johnson,Johnson and Johnson,JNJ,Healthcare,United States
+home-depot,The Home Depot Inc.,HD,Consumer Discretionary,United States
+netflix,Netflix Inc.,NFLX,Communication Services,United States
+abbvie,AbbVie Inc.,ABBV,Healthcare,United States
+bank-of-america,Bank of America Corporation,BAC,Financials,United States
+coca-cola,The Coca-Cola Company,KO,Consumer Staples,United States
+amd,Advanced Micro Devices Inc.,AMD,Technology,United States
+salesforce,Salesforce Inc.,CRM,Technology,United States
+chevron,Chevron Corporation,CVX,Energy,United States
+merck,Merck and Co. Inc.,MRK,Healthcare,United States
+t-mobile,T-Mobile US Inc.,TMUS,Communication Services,United States
+pepsico,PepsiCo Inc.,PEP,Consumer Staples,United States
+accenture,Accenture plc,ACN,Technology,Ireland
+adobe,Adobe Inc.,ADBE,Technology,United States
+cisco,Cisco Systems Inc.,CSCO,Technology,United States
+linde,Linde plc,LIN,Materials,Ireland
+mcdonalds,McDonald's Corporation,MCD,Consumer Discretionary,United States
+thermo-fisher,Thermo Fisher Scientific Inc.,TMO,Healthcare,United States
+qualcomm,QUALCOMM Incorporated,QCOM,Technology,United States
+ibm,International Business Machines Corporation,IBM,Technology,United States
+caterpillar,Caterpillar Inc.,CAT,Industrials,United States
+disney,The Walt Disney Company,DIS,Communication Services,United States
+ge-aerospace,GE Aerospace,GE,Industrials,United States
+abbott,Abbott Laboratories,ABT,Healthcare,United States
+intuitive-surgical,Intuitive Surgical Inc.,ISRG,Healthcare,United States
+danaher,Danaher Corporation,DHR,Healthcare,United States
+servicenow,ServiceNow Inc.,NOW,Technology,United States
+wells-fargo,Wells Fargo and Company,WFC,Financials,United States
+intuit,Intuit Inc.,INTU,Technology,United States
+texas-instruments,Texas Instruments Incorporated,TXN,Technology,United States
+amgen,Amgen Inc.,AMGN,Healthcare,United States
+verizon,Verizon Communications Inc.,VZ,Communication Services,United States
+philip-morris,Philip Morris International Inc.,PM,Consumer Staples,United States
+conocophillips,ConocoPhillips,COP,Energy,United States
+goldman-sachs,The Goldman Sachs Group Inc.,GS,Financials,United States
+rtx,RTX Corporation,RTX,Industrials,United States
+honeywell,Honeywell International Inc.,HON,Industrials,United States
+nike,NIKE Inc.,NKE,Consumer Discretionary,United States
+union-pacific,Union Pacific Corporation,UNP,Industrials,United States
+citigroup,Citigroup Inc.,C,Financials,United States
+sp-global,S&P Global Inc.,SPGI,Financials,United States
+prologis,Prologis Inc.,PLD,Real Estate,United States
+lowes,Lowe's Companies Inc.,LOW,Consumer Discretionary,United States
+pfizer,Pfizer Inc.,PFE,Healthcare,United States
+ups,United Parcel Service Inc.,UPS,Industrials,United States
+booking,Booking Holdings Inc.,BKNG,Consumer Discretionary,United States
+blackrock,BlackRock Inc.,BLK,Financials,United States
+elevance-health,Elevance Health Inc.,ELV,Healthcare,United States
+stryker,Stryker Corporation,SYK,Healthcare,United States
+automatic-data-processing,Automatic Data Processing Inc.,ADP,Industrials,United States
+charles-schwab,The Charles Schwab Corporation,SCHW,Financials,United States
+boeing,The Boeing Company,BA,Industrials,United States
+att,AT&T Inc.,T,Communication Services,United States
+deere,Deere and Company,DE,Industrials,United States
+medtronic,Medtronic plc,MDT,Healthcare,Ireland
+applied-materials,Applied Materials Inc.,AMAT,Technology,United States
+micron,Micron Technology Inc.,MU,Technology,United States
+palo-alto-networks,Palo Alto Networks Inc.,PANW,Technology,United States
+lam-research,Lam Research Corporation,LRCX,Technology,United States
+constellation-energy,Constellation Energy Corporation,CEG,Utilities,United States
+eaton,Eaton Corporation plc,ETN,Industrials,Ireland
+cme-group,CME Group Inc.,CME,Financials,United States
+marsh-mclennan,Marsh and McLennan Companies Inc.,MMC,Financials,United States
+cvs-health,CVS Health Corporation,CVS,Healthcare,United States
+bristol-myers-squibb,Bristol Myers Squibb Company,BMY,Healthcare,United States
+progressive,The Progressive Corporation,PGR,Financials,United States
+chubb,Chubb Limited,CB,Financials,Switzerland
+altria,Altria Group Inc.,MO,Consumer Staples,United States
+southern-company,The Southern Company,SO,Utilities,United States
+gilead,Gilead Sciences Inc.,GILD,Healthcare,United States
+us-bancorp,U.S. Bancorp,USB,Financials,United States
+ford,Ford Motor Company,F,Consumer Discretionary,United States
+general-motors,General Motors Company,GM,Consumer Discretionary,United States
+uber,Uber Technologies Inc.,UBER,Industrials,United States
+airbnb,Airbnb Inc.,ABNB,Consumer Discretionary,United States
+shopify,Shopify Inc.,SHOP,Technology,Canada
+sony,Sony Group Corporation,SONY,Consumer Discretionary,Japan
+sap,SAP SE,SAP,Technology,Germany
+toyota,Toyota Motor Corporation,TM,Consumer Discretionary,Japan
+novo-nordisk,Novo Nordisk A/S,NVO,Healthcare,Denmark
+asml,ASML Holding N.V.,ASML,Technology,Netherlands
+astrazeneca,AstraZeneca plc,AZN,Healthcare,United Kingdom
