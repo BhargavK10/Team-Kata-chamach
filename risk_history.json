@@ -1,528 +1,85 @@
 [
   {
-    "company_name": "Wells Fargo",
-    "timestamp": "2026-10-11T10:14:45.302787+00:00",
-    "overall_risk_score": 18,
-    "risk_level": "Low",
-    "escalated_threats_count": 1,
-    "noise_items_count": 9
-  },
-  {
-    "company_name": "Wells Fargo and Company",
-    "timestamp": "2026-10-11T10:15:04.041140+00:00",
-    "overall_risk_score": 18,
-    "risk_level": "Low",
-    "escalated_threats_count": 1,
-    "noise_items_count": 9
-  },
-  {
-    "company_name": "Wells Fargo and Company",
-    "timestamp": "2026-10-11T10:15:28.301747+00:00",
-    "overall_risk_score": 18,
-    "risk_level": "Low",
-    "escalated_threats_count": 1,
-    "noise_items_count": 9
-  },
-  {
-    "company_name": "Wells Fargo",
-    "timestamp": "2026-10-11T10:33:13.176518+00:00",
-    "overall_risk_score": 56,
-    "risk_level": "High",
-    "escalated_threats_count": 1,
-    "noise_items_count": 9,
-    "score_rationale": "Wells Fargo risk is rising to 56/100 (High) driven by 1 flagged regulatory and operational issues across public consumer grievances and industry coverage."
-  },
-  {
-    "company_name": "Wells Fargo",
-    "timestamp": "2026-10-11T10:33:13.176518+00:00",
-    "overall_risk_score": 56,
-    "risk_level": "High",
-    "escalated_threats_count": 1,
-    "noise_items_count": 9
-  },
-  {
-    "company_name": "Wells Fargo and Company",
-    "timestamp": "2026-10-11T10:35:36.087019+00:00",
-    "overall_risk_score": 56,
-    "risk_level": "High",
-    "escalated_threats_count": 1,
-    "noise_items_count": 9,
-    "score_rationale": "Wells Fargo and Company risk is rising to 56/100 (High) driven by 1 flagged regulatory and operational issues across public consumer grievances and industry coverage."
-  },
-  {
-    "company_name": "Wells Fargo and Company",
-    "timestamp": "2026-10-11T10:35:36.087019+00:00",
-    "overall_risk_score": 56,
-    "risk_level": "High",
-    "escalated_threats_count": 1,
-    "noise_items_count": 9
-  },
-  {
-    "company_name": "The Boeing Company",
-    "timestamp": "2026-10-11T10:36:32.337554+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 5,
-    "score_rationale": "The Boeing Company exhibits low risk (15/100) with routine market updates and no severe compliance or operational threats flagged in recent public data."
-  },
-  {
-    "company_name": "The Boeing Company",
-    "timestamp": "2026-10-11T10:36:32.337554+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 5
-  },
-  {
-    "company_name": "The Boeing Company",
-    "timestamp": "2026-10-11T10:36:34.992103+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 5,
-    "score_rationale": "The Boeing Company exhibits low risk (15/100) with routine market updates and no severe compliance or operational threats flagged in recent public data."
-  },
-  {
-    "company_name": "The Boeing Company",
-    "timestamp": "2026-10-11T10:36:34.992103+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 5
-  },
-  {
-    "company_name": "Tesla Inc.",
-    "timestamp": "2026-10-11T10:36:53.269030+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 5,
-    "score_rationale": "Tesla Inc. exhibits low risk (15/100) with routine market updates and no severe compliance or operational threats flagged in recent public data."
-  },
-  {
-    "company_name": "Tesla Inc.",
-    "timestamp": "2026-10-11T10:36:53.269030+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 5
-  },
-  {
-    "company_name": "Tesla Inc.",
-    "timestamp": "2026-10-11T10:37:06.091898+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 5,
-    "score_rationale": "Tesla Inc. exhibits low risk (15/100) with routine market updates and no severe compliance or operational threats flagged in recent public data."
-  },
-  {
-    "company_name": "Tesla Inc.",
-    "timestamp": "2026-10-11T10:37:06.091898+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 5
-  },
-  {
-    "company_name": "Walmart Inc.",
-    "timestamp": "2026-10-11T10:37:18.626599+00:00",
-    "overall_risk_score": 56,
-    "risk_level": "High",
-    "escalated_threats_count": 1,
-    "noise_items_count": 4,
-    "score_rationale": "Walmart Inc. risk is rising to 56/100 (High) driven by 1 flagged regulatory and operational issues across public consumer grievances and industry coverage."
-  },
-  {
-    "company_name": "Walmart Inc.",
-    "timestamp": "2026-10-11T10:37:18.626599+00:00",
-    "overall_risk_score": 56,
-    "risk_level": "High",
-    "escalated_threats_count": 1,
-    "noise_items_count": 4
-  },
-  {
-    "company_name": "Walmart Inc.",
-    "timestamp": "2026-10-11T10:37:31.726809+00:00",
-    "overall_risk_score": 56,
-    "risk_level": "High",
-    "escalated_threats_count": 1,
-    "noise_items_count": 4,
-    "score_rationale": "Walmart Inc. risk is rising to 56/100 (High) driven by 1 flagged regulatory and operational issues across public consumer grievances and industry coverage."
-  },
-  {
-    "company_name": "Walmart Inc.",
-    "timestamp": "2026-10-11T10:37:31.726809+00:00",
-    "overall_risk_score": 56,
-    "risk_level": "High",
-    "escalated_threats_count": 1,
-    "noise_items_count": 4
-  },
-  {
-    "company_name": "Tesla Inc.",
-    "timestamp": "2026-10-11T10:40:57.268235+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 10,
-    "score_rationale": "Tesla Inc. exhibits low risk (15/100) with routine market updates and no severe compliance or operational threats flagged in recent public data."
-  },
-  {
-    "company_name": "Tesla Inc.",
-    "timestamp": "2026-10-11T10:40:57.268235+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 10
-  },
-  {
-    "company_name": "Tesla Inc.",
-    "timestamp": "2026-10-11T10:41:00.371476+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 10,
-    "score_rationale": "Tesla Inc. exhibits low risk (15/100) with routine market updates and no severe compliance or operational threats flagged in recent public data."
-  },
-  {
-    "company_name": "Tesla Inc.",
-    "timestamp": "2026-10-11T10:41:00.371476+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 10
-  },
-  {
-    "company_name": "AbbVie Inc.",
-    "timestamp": "2026-10-11T10:51:18.097949+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 5,
-    "score_rationale": "AbbVie Inc. exhibits low risk (15/100) with routine market updates and no severe compliance or operational threats flagged in recent public data."
-  },
-  {
-    "company_name": "AbbVie Inc.",
-    "timestamp": "2026-10-11T10:51:18.097949+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 5
-  },
-  {
-    "company_name": "AbbVie Inc.",
-    "timestamp": "2026-10-11T10:51:28.993340+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 5,
-    "score_rationale": "AbbVie Inc. exhibits low risk (15/100) with routine market updates and no severe compliance or operational threats flagged in recent public data."
-  },
-  {
-    "company_name": "AbbVie Inc.",
-    "timestamp": "2026-10-11T10:51:28.993340+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 5
-  },
-  {
-    "company_name": "AbbVie Inc.",
-    "timestamp": "2026-10-11T10:54:10.144363+00:00",
-    "overall_risk_score": 92,
-    "risk_level": "Critical",
-    "escalated_threats_count": 2,
-    "noise_items_count": 8,
-    "score_rationale": "AbbVie Inc. risk is rising to 92/100 (Critical) driven by 2 flagged regulatory and operational issues across public consumer grievances and industry coverage."
-  },
-  {
-    "company_name": "AbbVie Inc.",
-    "timestamp": "2026-10-11T10:54:10.144363+00:00",
-    "overall_risk_score": 92,
-    "risk_level": "Critical",
-    "escalated_threats_count": 2,
-    "noise_items_count": 8
-  },
-  {
-    "company_name": "Tesla",
-    "timestamp": "2026-10-11T10:54:43.017508+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 10,
-    "score_rationale": "Tesla exhibits low risk (15/100) with routine market updates and no severe compliance or operational threats flagged in recent public data."
-  },
-  {
-    "company_name": "Tesla",
-    "timestamp": "2026-10-11T10:54:43.017508+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 10
-  },
-  {
-    "company_name": "ASML Holding N.V.",
-    "timestamp": "2026-10-11T10:58:11.162216+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 10,
-    "score_rationale": "ASML Holding N.V. exhibits low risk (15/100) with routine market updates and no severe compliance or operational threats flagged in recent public data."
-  },
-  {
-    "company_name": "ASML Holding N.V.",
-    "timestamp": "2026-10-11T10:58:11.162216+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 10
-  },
-  {
-    "company_name": "ASML Holding N.V.",
-    "timestamp": "2026-10-11T10:58:15.391703+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 10,
-    "score_rationale": "ASML Holding N.V. exhibits low risk (15/100) with routine market updates and no severe compliance or operational threats flagged in recent public data."
-  },
-  {
-    "company_name": "ASML Holding N.V.",
-    "timestamp": "2026-10-11T10:58:15.391703+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 10
-  },
-  {
-    "company_name": "AT&T Inc.",
-    "timestamp": "2026-10-11T10:58:34.730630+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 5,
-    "score_rationale": "AT&T Inc. exhibits low risk (15/100) with routine market updates and no severe compliance or operational threats flagged in recent public data."
-  },
-  {
-    "company_name": "AT&T Inc.",
-    "timestamp": "2026-10-11T10:58:34.730630+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 5
-  },
-  {
-    "company_name": "Advanced Micro Devices Inc.",
-    "timestamp": "2026-10-11T10:59:43.558352+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 5,
-    "score_rationale": "Advanced Micro Devices Inc. exhibits low risk (15/100) with routine market updates and no severe compliance or operational threats flagged in recent public data."
-  },
-  {
-    "company_name": "Advanced Micro Devices Inc.",
-    "timestamp": "2026-10-11T10:59:43.558352+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 5
-  },
-  {
-    "company_name": "Advanced Micro Devices Inc.",
-    "timestamp": "2026-10-11T10:59:54.207312+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 5,
-    "score_rationale": "Advanced Micro Devices Inc. exhibits low risk (15/100) with routine market updates and no severe compliance or operational threats flagged in recent public data."
-  },
-  {
-    "company_name": "Advanced Micro Devices Inc.",
-    "timestamp": "2026-10-11T10:59:54.207312+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 5
-  },
-  {
-    "company_name": "AT&T Inc.",
-    "timestamp": "2026-10-11T11:00:01.994243+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 10,
-    "score_rationale": "AT&T Inc. exhibits low risk (15/100) with routine market updates and no severe compliance or operational threats flagged in recent public data."
-  },
-  {
-    "company_name": "AT&T Inc.",
-    "timestamp": "2026-10-11T11:00:01.994243+00:00",
-    "overall_risk_score": 15,
-    "risk_level": "Low",
-    "escalated_threats_count": 0,
-    "noise_items_count": 10
-  },
-  {
-    "company_name": "Wells Fargo",
-    "timestamp": "2026-10-11T11:04:37.637240+00:00",
-    "overall_risk_score": 95,
-    "risk_level": "Critical",
-    "escalated_threats_count": 6,
-    "noise_items_count": 4,
-    "score_rationale": "Wells Fargo risk index is evaluated at 95/100 (Critical) driven by 6 flagged issues primarily in Regulatory/Compliance across CFPB filings and recent news coverage."
-  },
-  {
-    "company_name": "Wells Fargo",
-    "timestamp": "2026-10-11T11:04:37.637240+00:00",
-    "overall_risk_score": 95,
-    "risk_level": "Critical",
-    "escalated_threats_count": 6,
-    "noise_items_count": 4
-  },
-  {
-    "company_name": "Boeing",
-    "timestamp": "2026-10-11T11:04:43.363967+00:00",
-    "overall_risk_score": 89,
-    "risk_level": "Critical",
-    "escalated_threats_count": 5,
-    "noise_items_count": 5,
-    "score_rationale": "Boeing risk index is evaluated at 89/100 (Critical) driven by 5 flagged issues primarily in Regulatory/Compliance across CFPB filings and recent news coverage."
-  },
-  {
-    "company_name": "Boeing",
-    "timestamp": "2026-10-11T11:04:43.363967+00:00",
-    "overall_risk_score": 89,
-    "risk_level": "Critical",
-    "escalated_threats_count": 5,
-    "noise_items_count": 5
-  },
-  {
-    "company_name": "Adobe",
-    "timestamp": "2026-10-11T11:07:19.125871+00:00",
-    "overall_risk_score": 70,
-    "risk_level": "High",
-    "escalated_threats_count": 4,
-    "noise_items_count": 4,
-    "score_rationale": "Adobe risk index is evaluated at 70/100 (High) driven by 4 flagged issues primarily in Operational/Supply Chain across CFPB filings and recent news coverage."
-  },
-  {
-    "company_name": "Adobe",
-    "timestamp": "2026-10-11T11:07:19.125871+00:00",
-    "overall_risk_score": 70,
-    "risk_level": "High",
-    "escalated_threats_count": 4,
-    "noise_items_count": 4
-  },
-  {
-    "company_name": "Wells Fargo and Company",
-    "timestamp": "2026-10-11T11:11:13.995192+00:00",
-    "overall_risk_score": 95,
-    "risk_level": "Critical",
-    "escalated_threats_count": 7,
-    "noise_items_count": 3,
-    "score_rationale": "Wells Fargo and Company risk index is evaluated at 95/100 (Critical) driven by 7 flagged issues primarily in Regulatory/Compliance across CFPB filings and recent news coverage."
-  },
-  {
-    "company_name": "Wells Fargo and Company",
-    "timestamp": "2026-10-11T11:11:13.995192+00:00",
-    "overall_risk_score": 95,
-    "risk_level": "Critical",
-    "escalated_threats_count": 7,
-    "noise_items_count": 3
-  },
-  {
-    "company_name": "AT&T Inc.",
-    "timestamp": "2026-10-11T11:11:17.302363+00:00",
-    "overall_risk_score": 83,
-    "risk_level": "Critical",
-    "escalated_threats_count": 5,
-    "noise_items_count": 5,
-    "score_rationale": "AT&T Inc. risk index is evaluated at 83/100 (Critical) driven by 5 flagged issues primarily in Regulatory/Compliance across CFPB filings and recent news coverage."
-  },
-  {
-    "company_name": "AT&T Inc.",
-    "timestamp": "2026-10-11T11:11:17.302363+00:00",
-    "overall_risk_score": 83,
-    "risk_level": "Critical",
-    "escalated_threats_count": 5,
-    "noise_items_count": 5
-  },
-  {
-    "company_name": "Wells Fargo",
-    "timestamp": "2026-10-11T11:30:13.955516+00:00",
-    "overall_risk_score": 83,
-    "risk_level": "Critical",
-    "escalated_threats_count": 5,
-    "noise_items_count": 5,
-    "score_rationale": "Wells Fargo risk index is evaluated at 83/100 (Critical) driven by 5 flagged issues primarily in Regulatory/Compliance across CFPB filings and recent news coverage."
-  },
-  {
-    "company_name": "Wells Fargo",
-    "timestamp": "2026-10-11T11:30:52.396791+00:00",
-    "overall_risk_score": 83,
-    "risk_level": "Critical",
-    "escalated_threats_count": 5,
-    "noise_items_count": 5,
-    "score_rationale": "Wells Fargo risk index is evaluated at 83/100 (Critical) driven by 5 flagged issues primarily in Regulatory/Compliance across CFPB filings and recent news coverage."
-  },
-  {
-    "company_name": "Wells Fargo",
-    "timestamp": "2026-10-11T11:30:52.396791+00:00",
-    "overall_risk_score": 83,
-    "risk_level": "Critical",
-    "escalated_threats_count": 5,
-    "noise_items_count": 5
-  },
-  {
-    "company_name": "Tesla",
-    "timestamp": "2026-10-11T11:31:18.585424+00:00",
-    "overall_risk_score": 83,
-    "risk_level": "Critical",
-    "escalated_threats_count": 5,
-    "noise_items_count": 5,
-    "score_rationale": "Tesla risk index is evaluated at 83/100 (Critical) driven by 5 flagged issues primarily in Regulatory/Compliance across CFPB filings and recent news coverage."
-  },
-  {
-    "company_name": "Tesla",
-    "timestamp": "2026-10-11T11:31:18.585424+00:00",
-    "overall_risk_score": 83,
-    "risk_level": "Critical",
-    "escalated_threats_count": 5,
-    "noise_items_count": 5
-  },
-  {
-    "company_name": "ASML Holding N.V.",
-    "timestamp": "2026-10-11T11:34:01.357101+00:00",
-    "overall_risk_score": 83,
-    "risk_level": "Critical",
-    "escalated_threats_count": 5,
-    "noise_items_count": 5,
-    "score_rationale": "ASML Holding N.V. risk index is evaluated at 83/100 (Critical) driven by 5 flagged issues primarily in Regulatory/Compliance across CFPB filings and recent news coverage."
-  },
-  {
-    "company_name": "ASML Holding N.V.",
-    "timestamp": "2026-10-11T11:34:01.357101+00:00",
-    "overall_risk_score": 83,
-    "risk_level": "Critical",
-    "escalated_threats_count": 5,
-    "noise_items_count": 5
-  },
-  {
-    "company_name": "Alphabet Inc.",
-    "timestamp": "2026-10-11T11:57:58.517106+00:00",
+    "id": 1,
+    "company_name": "Adobe Inc.",
+    "timestamp": "2026-10-11T12:43:48.080124+00:00",
     "overall_risk_score": 14,
     "risk_level": "Low",
     "escalated_threats_count": 0,
     "noise_items_count": 5,
-    "score_rationale": "Alphabet Inc. maintains a Low corporate risk profile (14/100) with routine market coverage and 0 active regulatory or operational disruptions detected."
+    "score_rationale": "Adobe Inc. maintains a Low corporate risk profile (14/100) with routine market coverage and 0 active regulatory or operational disruptions detected.",
+    "created_at": "2026-10-11T12:43:51.915367+00:00"
   },
   {
-    "company_name": "Alphabet Inc.",
-    "timestamp": "2026-10-11T11:57:58.517106+00:00",
+    "id": 3,
+    "company_name": "Adobe Inc.",
+    "timestamp": "2026-10-11T12:43:48.080124+00:00",
     "overall_risk_score": 14,
     "risk_level": "Low",
     "escalated_threats_count": 0,
-    "noise_items_count": 5
+    "noise_items_count": 5,
+    "score_rationale": "Adobe Inc. maintains a Low corporate risk profile (14/100) with routine market coverage and 0 active regulatory or operational disruptions detected.",
+    "created_at": "2026-10-11T12:52:00.270134+00:00"
+  },
+  {
+    "id": 2,
+    "company_name": "Amazon.com Inc.",
+    "timestamp": "2026-10-11T12:44:14.188339+00:00",
+    "overall_risk_score": 14,
+    "risk_level": "Low",
+    "escalated_threats_count": 0,
+    "noise_items_count": 5,
+    "score_rationale": "Amazon.com Inc. maintains a Low corporate risk profile (14/100) with routine market coverage and 0 active regulatory or operational disruptions detected.",
+    "created_at": "2026-10-11T12:44:16.960264+00:00"
+  },
+  {
+    "id": 4,
+    "company_name": "Amazon.com Inc.",
+    "timestamp": "2026-10-11T12:44:14.188339+00:00",
+    "overall_risk_score": 14,
+    "risk_level": "Low",
+    "escalated_threats_count": 0,
+    "noise_items_count": 5,
+    "score_rationale": "Amazon.com Inc. maintains a Low corporate risk profile (14/100) with routine market coverage and 0 active regulatory or operational disruptions detected.",
+    "created_at": "2026-10-11T12:52:01.779852+00:00"
+  },
+  {
+    "id": 5,
+    "company_name": "Amazon.com Inc.",
+    "timestamp": "2026-10-11T12:44:14.188339+00:00",
+    "overall_risk_score": 14,
+    "risk_level": "Low",
+    "escalated_threats_count": 0,
+    "noise_items_count": 5,
+    "score_rationale": "",
+    "created_at": "2026-10-11T12:52:03.237723+00:00"
+  },
+  {
+    "id": 6,
+    "company_name": "Wells Fargo",
+    "timestamp": "2026-10-11T12:53:34.841342+00:00",
+    "overall_risk_score": 83,
+    "risk_level": "Critical",
+    "escalated_threats_count": 5,
+    "noise_items_count": 5,
+    "score_rationale": "Wells Fargo risk index is evaluated at 83/100 (Critical) driven by 5 flagged issues primarily in Regulatory/Compliance across CFPB filings and recent news coverage.",
+    "created_at": "2026-10-11T12:53:37.310875+00:00"
+  },
+  {
+    "company_name": "Tesla",
+    "timestamp": "2026-10-11T12:54:20.244993+00:00",
+    "overall_risk_score": 95,
+    "risk_level": "Critical",
+    "escalated_threats_count": 6,
+    "noise_items_count": 4,
+    "score_rationale": "Tesla risk index is evaluated at 95/100 (Critical) driven by 6 flagged issues primarily in Operational/Supply Chain across CFPB filings and recent news coverage."
+  },
+  {
+    "company_name": "Tesla",
+    "timestamp": "2026-10-11T12:54:20.244993+00:00",
+    "overall_risk_score": 95,
+    "risk_level": "Critical",
+    "escalated_threats_count": 6,
+    "noise_items_count": 4
   }
 ]
