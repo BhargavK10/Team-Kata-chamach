@@ -176,6 +176,7 @@ Evaluate the following {len(raw_items)} public data items:
 
     gemini_key = os.getenv("GEMINI_API_KEY")
     parsed_output = None
+    active_model = None
 
     if gemini_key:
         client = genai.Client(api_key=gemini_key)
@@ -193,12 +194,16 @@ Evaluate the following {len(raw_items)} public data items:
                 )
                 raw_json = response.text.strip()
                 parsed_output = GeminiAnalysisOutput.model_validate_json(raw_json)
+                active_model = f"Google Gemini ({model_name})"
+                print(f"  [✓] Assessed {keyword} via live {active_model}")
                 break
-            except Exception:
-                pass
+            except Exception as e:
+                print(f"  [!] Gemini attempt with {model_name} failed: {e}")
 
     # High-speed Heuristic Evaluator if Gemini is rate-limited or unauthenticated
     if not parsed_output:
+        active_model = "Rule-Based Heuristic Risk Engine (Offline Fallback)"
+        print(f"  [i] Operating with fallback engine: {active_model}")
         from engine import RiskAnalysisEngine
         heuristic_engine = RiskAnalysisEngine(provider="heuristic")
         evaluated_items = []
@@ -308,4 +313,5 @@ Evaluate the following {len(raw_items)} public data items:
         noise_items_count=noise,
         history_points=history_points,
         analyzed_items=analyzed_items,
+        ai_model_used=active_model or "Heuristic Engine",
     )
