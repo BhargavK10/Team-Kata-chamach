@@ -115,6 +115,39 @@ def get_graph_data(company: Optional[str] = Query(None, description="Filter by c
     return history
 
 
+@app.get("/api/company-logo")
+def get_company_logo(company: str = Query(..., description="Target company name or ticker")):
+    """
+    Fetches real-time company brand logo from Logo.dev using the configured API key.
+    """
+    secret_key = os.getenv("LOGODEV_SECRET_KEY", "sk_Oxs3FZmhQW-XfR7xwrTJyQ")
+    pub_key = os.getenv("LOGODEV_PUBLISHABLE_KEY", "pk_H-lf1z_7R36u6_YQr-7nnA")
+    try:
+        import requests
+        res = requests.get(
+            f"https://api.logo.dev/search?q={company}",
+            headers={"Authorization": f"Bearer {secret_key}"},
+            timeout=4
+        )
+        if res.status_code == 200:
+            hits = res.json()
+            if hits and isinstance(hits, list):
+                return {
+                    "company": company,
+                    "domain": hits[0].get("domain"),
+                    "logo_url": hits[0].get("logo_url")
+                }
+    except Exception as e:
+        print(f"  [!] Logo.dev API error: {e}")
+
+    clean_domain = f"{company.lower().replace(' ', '').replace(',', '').replace('.', '')}.com"
+    return {
+        "company": company,
+        "domain": clean_domain,
+        "logo_url": f"https://img.logo.dev/{clean_domain}?token={pub_key}"
+    }
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("api:app", host="0.0.0.0", port=8000, reload=True)

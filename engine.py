@@ -171,16 +171,33 @@ class RiskAnalysisEngine:
             category = RiskCategory.OPERATIONAL_SUPPLY_CHAIN
             severity = 4
             threat_summary = f"Operational disruption and security incident affecting {item.company_name}."
-        elif any(kw in text for kw in regulatory_keywords):
+        elif any(kw in text for kw in regulatory_keywords) or "cfpb" in item.source_type.lower():
             category = RiskCategory.REGULATORY_COMPLIANCE
-            severity = 3
-            if any(term in text for term in ["record fine", "nationwide recall", "criminal probe", "systemic"]):
+            if any(term in text for term in ["record fine", "nationwide recall", "criminal probe", "systemic", "sec probe"]):
                 severity = 5
-            threat_summary = f"Regulatory compliance action initiated against {item.company_name}."
+                threat_summary = f"Severe regulatory compliance enforcement action initiated against {item.company_name}."
+            elif any(term in text for term in ["fine", "investigation", "penalty", "violation", "probe", "lawsuit"]):
+                severity = 3
+                threat_summary = f"Regulatory scrutiny and compliance inquiry targeting {item.company_name}."
+            else:
+                # Individual consumer regulatory grievance logged with federal bureau
+                severity = 2
+                threat_summary = f"Federal regulatory consumer dispute filed with CFPB regarding {item.company_name} operations."
         elif is_noise_indicator:
             category = RiskCategory.NOISE
             severity = 0
             threat_summary = "Routine update"
+        else:
+            # Check for general business threats
+            negative_sentiment = ["drops", "falls", "slumps", "cuts", "lays off", "downgrade", "crisis", "warning", "strike", "halt"]
+            if any(w in text for w in negative_sentiment):
+                category = RiskCategory.OPERATIONAL_SUPPLY_CHAIN
+                severity = 2
+                threat_summary = f"Adverse operational or business development reported for {item.company_name}."
+            else:
+                category = RiskCategory.NOISE
+                severity = 0
+                threat_summary = "Routine update"
 
         # Build verified output
         return RiskAnalysisOutput(

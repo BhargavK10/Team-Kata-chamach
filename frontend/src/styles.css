@@ -114,3 +114,14 @@ button{color:inherit}
 .status-no-coverage{border-color:#46404e;background:#1b1920;color:#9992a0}
 .company-data-disclaimer{padding:0 3px 12px;color:#807989;font-size:9px;line-height:1.6}
 @media(max-width:760px){.news-toolbar{align-items:flex-start}.scoreboard-banner{align-items:flex-start;gap:10px}.csv-links{flex-wrap:wrap}.company-row{height:43px;flex:0 0 43px}}
+
+.company-logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.company-logo-wrap:hover {
+  transform: scale(1.06);
+}

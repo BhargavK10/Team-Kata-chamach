@@ -1,6 +1,7 @@
 import { ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Interactive3D } from '../effects/CursorEffects.jsx'
+import CompanyLogo from '../common/CompanyLogo.jsx'
 
 export default function CompanyTable({ companies }) {
   return (
@@ -30,9 +31,7 @@ export default function CompanyTable({ companies }) {
           return (
             <Link to={`/company/${company.id}`} className="table-row" key={company.id}>
               <span className="table-company">
-                <span className="company-monogram" style={{ '--company-color': company.color || '#b699fa' }}>
-                  {company.ticker.slice(0, 1)}
-                </span>
+                <CompanyLogo company={company} size="md" />
                 <span>
                   <strong>{company.name}</strong>
                   <small>{company.ticker} · {company.country}</small>

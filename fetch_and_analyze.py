@@ -13,6 +13,7 @@ from datetime import datetime, timezone, timedelta
 from typing import List, Dict, Any, Optional
 
 import requests
+import yfinance as yf
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
@@ -42,43 +43,86 @@ class GeminiAnalysisOutput(BaseModel):
 
 
 def fetch_news_articles(keyword: str, max_articles: int = 5) -> List[Dict[str, str]]:
+    """
+    Ingests recent financial news articles for the target company.
+    Primary source: Yahoo Finance (yfinance) for institutional market stories and publishers.
+    Fallback: Google News RSS search if Yahoo Finance returns zero results or encounters an error.
+    """
     articles = []
+
+    # 1. Primary: Yahoo Finance via yfinance
     try:
-        query = urllib.parse.quote(keyword)
-        rss_url = f"https://news.google.com/rss/search?q={query}&hl=en-US&gl=US&ceid=US:en"
-        response = requests.get(rss_url, headers={"User-Agent": "Mozilla/5.0"}, timeout=8)
-        if response.status_code == 200:
-            root = ET.fromstring(response.content)
-            items = root.findall(".//item")[:max_articles]
-            for item in items:
-                title = item.find("title").text if item.find("title") is not None else "No Title"
-                pub_date = item.find("pubDate").text if item.find("pubDate") is not None else ""
+        search = yf.Search(keyword, news_count=max_articles)
+        yf_news = getattr(search, "news", []) or []
+        for item in yf_news[:max_articles]:
+            title = item.get("title") or "Financial Market Update"
+            publisher = item.get("publisher") or "Yahoo Finance"
+            link = item.get("link") or ""
+            pub_time = item.get("providerPublishTime")
+            if pub_time:
                 try:
-                    dt = datetime.strptime(pub_date[:16], "%a, %d %b %Y")
-                    date_str = dt.strftime("%Y-%m-%d")
+                    date_str = datetime.fromtimestamp(pub_time, tz=timezone.utc).strftime("%Y-%m-%d")
                 except Exception:
                     date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+            else:
+                date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
-                raw_desc = item.find("description").text if item.find("description") is not None else ""
-                clean_desc = re.sub(r"<[^>]+>", " ", raw_desc)
-                clean_desc = html.unescape(clean_desc).strip()
-                if not clean_desc or clean_desc == title:
-                    clean_desc = f"Public news coverage regarding {keyword}: {title}"
+            tickers = item.get("relatedTickers") or []
+            ticker_info = f" [Tickers: {', '.join(tickers)}]" if tickers else ""
+            desc = f"{publisher} financial report: {title}.{ticker_info} Link: {link}"
 
-                source = "Google News"
-                if " - " in title:
-                    parts = title.rsplit(" - ", 1)
-                    title = parts[0]
-                    source = parts[1]
-
-                articles.append({
-                    "title": title,
-                    "source": source,
-                    "date": date_str,
-                    "description": clean_desc[:250],
-                })
+            articles.append({
+                "title": title,
+                "source": publisher,
+                "date": date_str,
+                "description": desc,
+                "link": link,
+            })
+        if articles:
+            print(f"  [+] Ingested {len(articles)} articles from Yahoo Finance for '{keyword}'")
     except Exception as e:
-        print(f"  [!] Error fetching news for {keyword}: {e}")
+        print(f"  [!] Yahoo Finance search error for '{keyword}': {e}")
+
+    # 2. Fallback: Google News RSS if Yahoo Finance returned empty
+    if not articles:
+        try:
+            query = urllib.parse.quote(keyword)
+            rss_url = f"https://news.google.com/rss/search?q={query}&hl=en-US&gl=US&ceid=US:en"
+            response = requests.get(rss_url, headers={"User-Agent": "Mozilla/5.0"}, timeout=8)
+            if response.status_code == 200:
+                root = ET.fromstring(response.content)
+                items = root.findall(".//item")[:max_articles]
+                for item in items:
+                    title = item.find("title").text if item.find("title") is not None else "No Title"
+                    pub_date = item.find("pubDate").text if item.find("pubDate") is not None else ""
+                    try:
+                        dt = datetime.strptime(pub_date[:16], "%a, %d %b %Y")
+                        date_str = dt.strftime("%Y-%m-%d")
+                    except Exception:
+                        date_str = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+                    raw_desc = item.find("description").text if item.find("description") is not None else ""
+                    clean_desc = re.sub(r"<[^>]+>", " ", raw_desc)
+                    clean_desc = html.unescape(clean_desc).strip()
+                    if not clean_desc or clean_desc == title:
+                        clean_desc = f"Public news coverage regarding {keyword}: {title}"
+
+                    source = "Google News"
+                    if " - " in title:
+                        parts = title.rsplit(" - ", 1)
+                        title = parts[0]
+                        source = parts[1]
+
+                    articles.append({
+                        "title": title,
+                        "source": source,
+                        "date": date_str,
+                        "description": clean_desc[:250],
+                    })
+                if articles:
+                    print(f"  [+] Ingested {len(articles)} articles from Google News fallback for '{keyword}'")
+        except Exception as e:
+            print(f"  [!] Google News fallback error for '{keyword}': {e}")
 
     return articles
 
@@ -228,15 +272,19 @@ Evaluate the following {len(raw_items)} public data items:
                 threat_count += 1
                 total_threat_score += res.severity_score
 
-        # Calculate responsive score: base 10 + threat weighted
+        # Calibrated rolling score: base 14 + compound threat severity
         if threat_count == 0:
-            overall_score = 15
+            overall_score = 14
             tier = "Low"
-            rationale = f"{keyword} exhibits low risk ({overall_score}/100) with routine market updates and no severe compliance or operational threats flagged in recent public data."
+            rationale = f"{keyword} maintains a Low corporate risk profile (14/100) with routine market coverage and 0 active regulatory or operational disruptions detected."
         else:
-            overall_score = min(95, 20 + total_threat_score * 12)
+            # Scaled across 0-100 tiers based on total threat severity points
+            raw_score = 18 + int(total_threat_score * 6.5)
+            overall_score = max(20, min(95, raw_score))
             tier = "Low" if overall_score <= 24 else "Moderate" if overall_score <= 49 else "High" if overall_score <= 74 else "Critical"
-            rationale = f"{keyword} risk is rising to {overall_score}/100 ({tier}) driven by {threat_count} flagged regulatory and operational issues across public consumer grievances and industry coverage."
+            
+            top_category = max(evaluated_items, key=lambda x: x.severity_score).risk_category
+            rationale = f"{keyword} risk index is evaluated at {overall_score}/100 ({tier}) driven by {threat_count} flagged issues primarily in {top_category} across CFPB filings and recent news coverage."
 
         parsed_output = GeminiAnalysisOutput(
             company_name=keyword,

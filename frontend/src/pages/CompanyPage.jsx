@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom'
 import { Area, AreaChart, CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import DashboardLayout from '../components/layout/DashboardLayout.jsx'
 import { Interactive3D } from '../components/effects/CursorEffects.jsx'
+import CompanyLogo from '../components/common/CompanyLogo.jsx'
 import { getCompanies, getCompanyById } from '../services/companyService.js'
 import { getCompanyReport } from '../services/reportService.js'
 import { getCompanyNews } from '../services/newsService.js'
@@ -65,7 +66,7 @@ export default function CompanyPage() {
       {/* HERO SECTION */}
       <div className="company-hero">
         <div className="company-identity">
-          <span className="company-monogram large" style={{ '--company-color': company.color || '#b699fa' }}>{company.ticker.slice(0, 1)}</span>
+          <CompanyLogo company={company} size="xl" />
           <div>
             <span className="eyebrow">{company.ticker} · {company.sector} · {company.country}</span>
             <h1>{company.name}</h1>
@@ -125,10 +126,23 @@ export default function CompanyPage() {
               {report?.message || 'Analyzing current public stream and regulatory context...'}
             </p>
           </div>
-          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', fontSize: '12px', color: '#8e8a9d' }}>
-            <span><strong>Data Source:</strong> Ingested 5 News Articles + 5 CFPB Regulatory Complaints</span>
-            <span><strong>Storage:</strong> Synced with Supabase Time-Series</span>
-            <span><strong>Status:</strong> <span style={{ color: '#7dd9c1' }}>✓ Real-time Verified Analysis</span></span>
+          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', fontSize: '12px', color: '#8e8a9d', alignItems: 'center' }}>
+            <span><strong>Data Ingestion:</strong> 5 News Articles + 5 CFPB Regulatory Complaints</span>
+            <span><strong>Storage:</strong> Supabase Time-Series</span>
+            <span>
+              <strong>Active Engine:</strong>{' '}
+              <span
+                style={{
+                  background: report?.aiModelUsed?.includes('Gemini') ? 'rgba(125, 217, 193, 0.15)' : 'rgba(255, 170, 77, 0.15)',
+                  color: report?.aiModelUsed?.includes('Gemini') ? '#7dd9c1' : '#ffa94d',
+                  padding: '3px 8px',
+                  borderRadius: '4px',
+                  fontWeight: 'bold',
+                }}
+              >
+                {report?.aiModelUsed?.includes('Gemini') ? `✨ ${report.aiModelUsed}` : `⚡ ${report?.aiModelUsed || 'Rule-Based Fallback'}`}
+              </span>
+            </span>
           </div>
         </Interactive3D>
       </section>

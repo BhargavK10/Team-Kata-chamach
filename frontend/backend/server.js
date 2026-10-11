@@ -48,6 +48,99 @@ const selectRecentAlerts = db.prepare(`
   LIMIT 8
 `)
 
+const LOGODEV_PUB_KEY = process.env.LOGODEV_PUBLISHABLE_KEY || 'pk_H-lf1z_7R36u6_YQr-7nnA'
+
+const KNOWN_DOMAINS = {
+  'AAPL': 'apple.com',
+  'MSFT': 'microsoft.com',
+  'AMZN': 'amazon.com',
+  'NVDA': 'nvidia.com',
+  'GOOGL': 'google.com',
+  'META': 'meta.com',
+  'BRK.B': 'berkshirehathaway.com',
+  'LLY': 'lilly.com',
+  'AVGO': 'broadcom.com',
+  'JPM': 'jpmorganchase.com',
+  'TSLA': 'tesla.com',
+  'WMT': 'walmart.com',
+  'XOM': 'exxonmobil.com',
+  'V': 'visa.com',
+  'MA': 'mastercard.com',
+  'UNH': 'unitedhealthgroup.com',
+  'ORCL': 'oracle.com',
+  'COST': 'costco.com',
+  'PG': 'pg.com',
+  'JNJ': 'jnj.com',
+  'HD': 'homedepot.com',
+  'NFLX': 'netflix.com',
+  'ABBV': 'abbvie.com',
+  'BAC': 'bankofamerica.com',
+  'WFC': 'wellsfargo.com',
+  'BA': 'boeing.com',
+  'CVX': 'chevron.com',
+  'KO': 'coca-cola.com',
+  'PEP': 'pepsico.com',
+  'TMO': 'thermofisher.com',
+  'ADBE': 'adobe.com',
+  'CSCO': 'cisco.com',
+  'INTC': 'intel.com',
+  'AMD': 'amd.com',
+  'QCOM': 'qualcomm.com',
+  'IBM': 'ibm.com',
+  'TXN': 'ti.com',
+  'CRM': 'salesforce.com',
+  'CAT': 'caterpillar.com',
+  'GE': 'ge.com',
+  'DIS': 'disney.com',
+  'MCD': 'mcdonalds.com',
+  'NKE': 'nike.com',
+  'SBUX': 'starbucks.com',
+  'PFE': 'pfizer.com',
+  'MRK': 'merck.com',
+  'ABT': 'abbott.com',
+  'BMY': 'bms.com',
+  'AMGN': 'amgen.com',
+  'GILD': 'gilead.com',
+  'C': 'citigroup.com',
+  'MS': 'morganstanley.com',
+  'GS': 'goldmansachs.com',
+  'AXP': 'americanexpress.com',
+  'BLK': 'blackrock.com',
+  'SCHW': 'schwab.com',
+  'USB': 'usbank.com',
+  'PNC': 'pnc.com',
+  'T': 'att.com',
+  'VZ': 'verizon.com',
+  'TMUS': 't-mobile.com',
+  'CMCSA': 'comcastcorporation.com',
+  'UPS': 'ups.com',
+  'FDX': 'fedex.com',
+  'RTX': 'rtx.com',
+  'LMT': 'lockheedmartin.com',
+  'HON': 'honeywell.com',
+  'UNP': 'up.com',
+  'DE': 'deere.com',
+  'COP': 'conocophillips.com',
+  'SLB': 'slb.com',
+  'EOG': 'eogresources.com',
+  'NEE': 'nexteraenergy.com',
+  'DUK': 'duke-energy.com',
+  'SO': 'southerncompany.com',
+  'LIN': 'linde.com',
+  'APD': 'airproducts.com',
+  'SHW': 'sherwin-williams.com',
+  'PLD': 'prologis.com',
+  'AMT': 'americantower.com',
+  'EQIX': 'equinix.com',
+  'SPG': 'simon.com',
+  'O': 'realtyincome.com'
+}
+
+function getCompanyLogoUrl(ticker, name) {
+  const domain = KNOWN_DOMAINS[ticker] || `${(name || '').toLowerCase().replace(/[^a-z0-9]/g, '')}.com`
+  return `https://img.logo.dev/${domain}?token=${LOGODEV_PUB_KEY}`
+}
+
 function companyDto(row) {
   const articleCount = Number(row.article_count)
   const riskKeywordCount = Number(row.risk_keyword_count)
@@ -70,6 +163,7 @@ function companyDto(row) {
     color: companyColors[row.ticker.charCodeAt(0) % companyColors.length],
     latestPublishedAt: row.latest_published_at,
     category,
+    logoUrl: getCompanyLogoUrl(row.ticker, row.name),
   }
 }
 
@@ -419,6 +513,7 @@ async function route(request, response, url) {
       noiseItemsCount: aiAssessment ? aiAssessment.noise_items_count : null,
       analyzedItems: aiAssessment ? aiAssessment.analyzed_items : [],
       historyPoints: aiAssessment?.history_points || [],
+      aiModelUsed: aiAssessment?.ai_model_used || (aiAssessment ? 'Google Gemini' : 'Evaluating'),
       events,
     })
   }

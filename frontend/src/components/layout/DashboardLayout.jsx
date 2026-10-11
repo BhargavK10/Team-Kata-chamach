@@ -3,6 +3,7 @@ import { Bell, ChevronDown, Menu, Radar, Search, X, ShieldAlert, TrendingUp } fr
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { logout, getSession } from '../../services/authService.js'
 import Brand from '../Brand.jsx'
+import CompanyLogo from '../common/CompanyLogo.jsx'
 
 function Sidebar({ companies = [], selected = [], onToggle = () => {}, mobileOpen, onClose }) {
   const [companyFilter, setCompanyFilter] = useState('')
@@ -53,9 +54,9 @@ function Sidebar({ companies = [], selected = [], onToggle = () => {}, mobileOpe
                 className="company-row"
                 key={company.id}
                 onClick={onClose}
-                style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}
+                style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '8px' }}
               >
-                <span className="risk-dot" style={{ '--company-color': company.color || '#a98aff' }} />
+                <CompanyLogo company={company} size="sm" />
                 <span className="company-row-name">
                   <strong>{company.ticker}</strong>
                   <small title={company.name}>{company.name}</small>
