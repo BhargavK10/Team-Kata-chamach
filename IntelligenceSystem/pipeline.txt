@@ -1,0 +1,48 @@
+2. Design the processing pipeline
+I'd split your service into seven stages. Each stage should have one responsibility so you can test it separately and debug failures quickly.
+1
+
+Input validation and normalization
+Check required fields, clean text, normalize timestamps and reject articles that lack enough information to process. Keep the original URL and source metadata.
+
+
+
+2
+
+Deduplication and company relevance
+Identify repeated articles and determine whether the article actually concerns the target company. A company mentioned only in passing shouldn't automatically receive a risk event.
+
+
+
+3
+
+Risk classification
+Use an LLM to decide whether the article contains a material corporate risk, its category, severity and status. Filter out routine news and irrelevant keyword matches.
+
+
+
+4
+
+Evidence and structured extraction
+Extract the specific facts supporting the risk, a short evidence excerpt, event date, entities involved and a concise explanation. Never rely only on the article headline.
+
+
+
+5
+
+Deterministic risk scoring
+Convert the extracted event into a numerical impact using severity, source quality, confidence, novelty and recency.
+
+
+
+6
+
+Historical comparison and aggregation
+Compare the event with previous events, suppress repeated coverage of the same incident, update the company's score and calculate how much the score changed.
+
+
+
+7
+
+Response generation
+Return the company score, risk level, newly detected events, key reasons, historical context and evidence links in a consistent JSON response for React.

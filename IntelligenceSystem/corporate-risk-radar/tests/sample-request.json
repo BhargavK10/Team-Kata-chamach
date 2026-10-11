@@ -1,0 +1,24 @@
+{
+  "company": {
+    "id": "company_001",
+    "name": "Example Financial Ltd",
+    "aliases": ["Example Financial", "EFL"]
+  },
+  "articles": [
+    {
+      "url": "https://news.example.test/example-financial-regulator-investigation",
+      "title": "Regulator opens investigation into Example Financial",
+      "snippet": "The financial regulator announced a formal investigation into Example Financial Ltd on Friday.",
+      "source": "Reuters",
+      "published_at": "2026-10-11T08:30:00Z",
+      "keyword": "regulatory investigation"
+    },
+    {
+      "id": "example-routine-001",
+      "title": "Example Financial announces a new customer service centre",
+      "snippet": "Example Financial Ltd announced a new customer service centre in Pune.",
+      "source": "Company press release",
+      "published_at": "2026-10-10T08:30:00Z"
+    }
+  ]
+}

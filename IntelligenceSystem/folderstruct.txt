@@ -1,0 +1,22 @@
+risk-radar/
+├── src/
+│   ├── routes/
+│   │   └── risk.routes.js
+│   ├── services/
+│   │   ├── article-normalizer.js
+│   │   ├── deduplication.js
+│   │   ├── risk-classifier.js
+│   │   ├── risk-scorer.js
+│   │   ├── event-history.js
+│   │   └── company-summary.js
+│   ├── db/
+│   │   ├── schema.sql
+│   │   └── queries.js
+│   ├── utils/
+│   │   └── validation.js
+│   └── app.js
+├── tests/
+│   └── sample-articles.json
+├── .env
+├── .gitignore
+└── package.json
