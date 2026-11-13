@@ -45,7 +45,7 @@ def check_and_sync():
         url = f"{SUPABASE_URL}/rest/v1/company_risk_history?select=count"
         res = requests.get(url, headers=headers, timeout=5)
         if res.status_code == 200:
-            print("  [✓] Successfully connected to table 'company_risk_history'!")
+            print("  [OK] Successfully connected to table 'company_risk_history'!")
         elif res.status_code == 404:
             print("  [!] Connection reached Supabase, but table 'company_risk_history' does not exist yet.")
             print("      Please run the SQL commands in 'supabase_schema.sql' via your Supabase SQL Editor.")
@@ -82,7 +82,7 @@ def check_and_sync():
                 )
                 if write_res.status_code in [200, 201]:
                     synced += 1
-            print(f"  [✓] Successfully synced {synced}/{len(records)} records to Supabase table!")
+            print(f"  [OK] Successfully synced {synced}/{len(records)} records to Supabase table!")
         except Exception as e:
             print(f"  [!] Sync error: {e}")
 
